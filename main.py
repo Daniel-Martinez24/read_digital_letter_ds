@@ -23,7 +23,19 @@ def print_img(list_lett: list , PIX_SIZE : int ) -> None:
 
     num_fig = 1
     for _el in list_lett:
-        fig.add_subplot(1, len(list_lett), num_fig)
+
+        if len(list_lett) > 3:
+            rows = (pow(len(list_lett) , .5))
+            if rows % 2 == 0:
+                colums = (rows)
+            elif rows % 2 > 0.5:
+                colums = rows + 2
+            elif rows % 2 < 0.5:
+                colums = rows + 1
+            rows, colums = int(rows), int(colums)
+            fig.add_subplot(rows, colums, num_fig)
+        else:
+            fig.add_subplot(1, len(list_lett), num_fig)
         # plt.figure(num_fig)
         num_fig += 1
         a_a = np.array(_el[1])
