@@ -1,3 +1,8 @@
+"""
+digital_letters.csv debe estar en la misma carpeta
+código: Daniel Martinez Diaz
+"""
+
 import numpy as np # licencia BSD
 from matplotlib import pyplot as plt # licencia BSD 
 
