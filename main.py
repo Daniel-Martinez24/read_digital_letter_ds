@@ -4,6 +4,8 @@ código: Daniel Martinez Diaz
 """
 
 import numpy as np # licencia BSD
+from scipy.spatial.distance import hamming # formula para hamming
+
 from matplotlib import pyplot as plt # licencia BSD 
 
 def take_img(n_elem) -> list:
@@ -49,8 +51,24 @@ def print_img(list_lett: list , PIX_SIZE : int ) -> None:
 
     plt.show()
 
+"""Calcular distancia de hamilton en base a un lista de zeros"""
+def hamm_base_img(img: list) -> int:
+    img_len = len(img)
+    base_img = [0] * img_len
+    hamming_distance = hamming(img, base_img) * img_len
+    return hamming_distance
+
+"""Calcular distancia de hamilton"""
+def hamm_distance(list_lett) -> list:
+    distances = []
+    for lett in list_lett:
+        img = lett[1]
+        distances.append(hamm_base_img(img))
+    return distances
+
 def main(n_elem : int , PIX_SIZE : int ) -> None:
     list_lett = take_img(n_elem)
+    hamm_distance(list_lett)
     print_img(list_lett, PIX_SIZE)
 
 if __name__ == '__main__':
